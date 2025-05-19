@@ -1,14 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h2> 김도건의 질문 리스트 템플릿 </h2>	
 
-<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
-<div class="container my-3">
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+    
+    <meta charset="utf-8">
+    
+<div layout:fragment="content" class="container my-3">
+
+<h1> 김도건의 방명록입니다. 환영합니다. 5/19입니다</h1>
+<hr>
+<hr>
+
+
 
 <table class="table">
 	<thead class="table-dark">
@@ -20,13 +22,16 @@
 	</thead>
 	<tbody>
 		<tr th:each="question, loop : ${questionList}">
-		<td th:text="${loop.count}"></td>
+			<td th:text="${loop.count}"></td>
 			<td><a th:href="@{|/question/detail/${question.id}|}"
 				th:text="${question.subject}"></a></td>
 			<td th:text="${question.createDate}"></td>
 		</tr>
 	</tbody>
 </table>
+
+<a th:href="@{/question/create}" class="btn btn-primary"> 질문 작성하기 </a>
 </div>
+
 </body>
 </html>
